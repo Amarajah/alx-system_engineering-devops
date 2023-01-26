@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times using 1f statements
+
+x=1;
+while [ $x -le 10 ]
+do
+    if [ $x -eq 9 ]
+    then
+        echo "Best School"
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+    x=$((x+1))
+done
