@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # TCP_and_UDP_ports
 
-#!/bin/bash
-
 # Get the list of listening sockets
 sockets=$(ss -lntu | awk 'NR>1 {print $4}')
 
