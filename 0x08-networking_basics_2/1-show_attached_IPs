@@ -1,2 +1,14 @@
 #!/usr/bin/env bash
 # Bash script that displays all active IPv4 IPs on the machine it’s executed on.
+
+# Get a list of all network interfaces
+interfaces=$(ifconfig | awk '/^[a-zA-Z0-9]+:/ {sub(/:/,"",$1); print $1}')
+
+# Loop through the interfaces and get the IPv4 addresses
+for interface in $interfaces; do
+  ip=$(ifconfig $interface | awk '/inet / {print $2}')
+  if [[ $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "$interface: $ip"
+  fi
+done
+
