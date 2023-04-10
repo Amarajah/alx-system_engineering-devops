@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Run Apache on a di=ocker container and get a "Hello Holberton" response
+
+sudo service apache2 start
