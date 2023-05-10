@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <img src="https://cdn-icons-png.flaticon.com/128/2096/2096544.png" width="300" height="300">
+</body>
+</html>
+
+
 Postmortem
 Issue Summary:
 On May 1st, 2023, from 12:30 PM to 14:30 PM GMT, users were unable to access the 'Buy airtime' section on our e-banking platform. This issue impacted 100% of users who tried to access the aforementioned service on our platform at those specific time periods and resulted in a loss of potential revenue for the company.
