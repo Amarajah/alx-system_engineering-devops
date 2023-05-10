@@ -1,22 +1,14 @@
 #!/usr/bin/python3
-#  sends a request to the URL and displays the value of
-# the variable X-Request-Id in the response header
-
-'''Python script that, using this REST API, for a given employee ID,
-returns information about his/her TODO list progress.'''
-import sys
+"""Returns list information for a given employee's ID."""
 import requests
+import sys
 
-if __name__ == '__main__':
-    url = "https://jsonplaceholder.typicode.com/users/"
+if __name__ == "__main__":
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
+    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
 
-    reqEmployee = requests.get(url + sys.argv[1])
-    reqTodo = requests.get(url + sys.argv[1] + "todos")
-
-    jsonemp = reqEmployee.json()
-    tasks = [key['completed'] for key in reqTodo.json()]
-    print("Employee {} is done with tasks ({}/{}):".format(
-        jsonemp.get('name'), tasks.count(True), len(tasks)))
-    for tasks in reqTodo.json():
-        if task.get('completed') is True:
-            print("\t {}".format(task.get('title')))
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+    [print("\t {}".format(c)) for c in completed]
